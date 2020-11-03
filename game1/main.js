@@ -8,17 +8,21 @@ var dy = 1;
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // ctx.fillStyle = 'hsl(' + 360 * Math.random() + ', 50%, 50%)'
   ctx.font = ctx.font.replace(/\d+px/, "28px");
   ctx.fillText("Happy Halloween!", x, y, 200);
 
   x = x + dx;
   y = y + dy;
 
-  if (x > canvas.width) dx = -1;
-  if (y > canvas.height) dy = -1;
-  if (x < 0) dx = 1;
-  if (y < 0) dy = 1;
+  if (x < 0 || x > canvas.width) {
+    dx = -dx;
+    ctx.fillStyle = "hsl(" + 360 * Math.random() + ", 50%, 50%)";
+  }
+
+  if (y < 0 || y > canvas.height) {
+    dy = -dy;
+    ctx.fillStyle = "hsl(" + 360 * Math.random() + ", 50%, 50%)";
+  }
 }
 
 setInterval(draw, 20);
