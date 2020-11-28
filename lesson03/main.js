@@ -12,10 +12,13 @@ class Ball {
     this.y = parseInt(Math.random() * ctx.canvas.height, 10);
     this.color = "hsl(" + 360 * Math.random() + ", 50%, 50%)";
     this.xSpeed = parseInt(Math.random() * 5, 10);
+    this.xSpeed = this.xSpeed === 0 ? 1 : this.xSpeed;
     this.ySpeed = parseInt(Math.random() * 5, 10);
+    this.ySpeed = this.ySpeed === 0 ? 1 : this.ySpeed;
     this.radius = parseInt(Math.random() * MAX_RADIUS, 10);
     this.radius = this.radius === 0 ? 1 : this.radius;
     this.live = true;
+    this.eats = 0;
   }
 
   distance(ball) {
@@ -31,6 +34,9 @@ class Ball {
     // var c = parseInt(this.radius - ball.radius, 10);
     if (ball.radius + this.distance(ball) < this.radius) {
       ball.live = false;
+      this.radius += parseInt(ball.radius / 4, 10);
+      this.eats += 1;
+      lives--;
     }
   }
 
@@ -41,6 +47,10 @@ class Ball {
     this.ctx.fillStyle = this.color;
     this.ctx.fill();
     this.ctx.closePath();
+
+    ctx.fillStyle = "white";
+    ctx.font = ctx.font.replace(/\d+px/, "18px");
+    ctx.fillText(this.eats, this.x - 6, this.y + 8, 20);
 
     this.x += this.xSpeed;
     this.y += this.ySpeed;
@@ -71,7 +81,25 @@ function resize() {
   ctx.canvas.height = window.innerHeight - MAX_RADIUS;
 }
 
+function gameover() {
+  ctx.font = "80px Dosis";
+  ctx.fillStyle = "Teal";
+
+  ctx.fillText(
+    "GAME OVER",
+    ctx.canvas.width / 2 - 200,
+    ctx.canvas.height / 2,
+    400
+  );
+}
+
 function draw() {
+  if (lives === 1) {
+    gameover();
+    clearInterval(interval);
+    return;
+  }
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (var i = 0; i < BALL_NUMBER - 1; i++) {
@@ -91,13 +119,19 @@ function draw() {
   }
 }
 
+var balls = [];
+var lives = BALL_NUMBER;
+var interval;
+
+function initinalize() {
+  for (var i = 0; i < BALL_NUMBER; ++i) {
+    balls.push(new Ball(ctx));
+  }
+}
 // when windows resized, call resize function to resize canvas
 window.onresize = resize;
 
 // resize canvas at begining
 resize();
-var balls = [];
-for (var i = 0; i < BALL_NUMBER; ++i) {
-  balls.push(new Ball(ctx));
-}
-setInterval(draw, 20);
+initinalize();
+interval = setInterval(draw, 20);
