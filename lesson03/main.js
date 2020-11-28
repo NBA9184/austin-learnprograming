@@ -66,11 +66,6 @@ class Ball {
   }
 }
 
-var balls = [];
-for (var i = 0; i < BALL_NUMBER; ++i) {
-  balls.push(new Ball(ctx));
-}
-
 function resize() {
   ctx.canvas.width = window.innerWidth - MAX_RADIUS;
   ctx.canvas.height = window.innerHeight - MAX_RADIUS;
@@ -101,5 +96,8 @@ window.onresize = resize;
 
 // resize canvas at begining
 resize();
-
+var balls = [];
+for (var i = 0; i < BALL_NUMBER; ++i) {
+  balls.push(new Ball(ctx));
+}
 setInterval(draw, 20);
