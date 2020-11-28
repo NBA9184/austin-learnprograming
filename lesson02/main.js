@@ -14,6 +14,7 @@ class Ball {
     this.xSpeed = Math.random() * 5;
     this.ySpeed = Math.random() * 5;
     this.radius = Math.random() * MAX_RADIUS;
+    this.radius = this.radius === 0 ? 1 : this.radius;
   }
 
   draw() {
