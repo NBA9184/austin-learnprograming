@@ -1,19 +1,19 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-const BALL_NUMBER = 10;
+const BALL_NUMBER = 50;
 const MAX_RADIUS = 20;
 
 class Ball {
   constructor(ctx) {
     this.ctx = ctx;
     // random postion
-    this.x = Math.random() * ctx.canvas.width;
-    this.y = Math.random() * ctx.canvas.height;
+    this.x = parseInt(Math.random() * ctx.canvas.width, 10);
+    this.y = parseInt(Math.random() * ctx.canvas.height, 10);
     this.color = "hsl(" + 360 * Math.random() + ", 50%, 50%)";
-    this.xSpeed = Math.random() * 5;
-    this.ySpeed = Math.random() * 5;
-    this.radius = Math.random() * MAX_RADIUS;
+    this.xSpeed = parseInt(Math.random() * 5, 10);
+    this.ySpeed = parseInt(Math.random() * 5, 10);
+    this.radius = parseInt(Math.random() * MAX_RADIUS, 10);
     this.radius = this.radius === 0 ? 1 : this.radius;
     this.live = true;
   }
@@ -22,13 +22,14 @@ class Ball {
     var a = this.x - ball.x;
     var b = this.y - ball.y;
 
-    return Math.sqrt(a * a + b * b);
+    return parseInt(Math.sqrt(a * a + b * b), 10);
   }
 
   eat(ball) {
-    var d = parseInt(this.distance(ball), 10);
-    var c = parseInt(this.radius - ball.radius, 10);
-    if (c > d) {
+    // must convert to Number, here we use int to compare.
+    // var d = parseInt(this.distance(ball), 10);
+    // var c = parseInt(this.radius - ball.radius, 10);
+    if (ball.radius + this.distance(ball) < this.radius) {
       ball.live = false;
     }
   }
