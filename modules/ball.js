@@ -1,13 +1,15 @@
-export default class Ball {
-  constructor(ctx, canvas, MAX_RADIUS) {
+export class Ball {
+  constructor(ctx, MAX_RADIUS) {
     this.ctx = ctx;
     // random postion
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
+    this.x = parseInt(Math.random() * ctx.canvas.width, 10);
+    this.y = parseInt(Math.random() * ctx.canvas.height, 10);
     this.color = "hsl(" + 360 * Math.random() + ", 50%, 50%)";
-    this.xSpeed = Math.random() * 5;
-    this.ySpeed = Math.random() * 5;
-    this.radius = Math.random() * MAX_RADIUS;
+    this.xSpeed = parseInt(Math.random() * 5, 10);
+    this.xSpeed = this.xSpeed === 0 ? 1 : this.xSpeed;
+    this.ySpeed = parseInt(Math.random() * 5, 10);
+    this.ySpeed = this.ySpeed === 0 ? 1 : this.ySpeed;
+    this.radius = parseInt(Math.random() * MAX_RADIUS, 10);
     this.radius = this.radius === 0 ? 1 : this.radius;
   }
 
@@ -23,12 +25,12 @@ export default class Ball {
 
     // Bouncing
     // right side
-    if (this.x + this.radius > this.canvas.width && this.xSpeed > 0) {
+    if (this.x + this.radius > this.ctx.canvas.width && this.xSpeed > 0) {
       this.xSpeed = -this.xSpeed;
     }
 
     // bottom
-    if (this.y + this.radius > this.canvas.height && this.ySpeed > 0) {
+    if (this.y + this.radius > this.ctx.canvas.height && this.ySpeed > 0) {
       this.ySpeed = -this.ySpeed;
     }
     // left side
