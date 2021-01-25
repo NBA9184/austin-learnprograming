@@ -16,6 +16,11 @@ export class Ball {
     this.radius = this.radius === 0 ? 1 : this.radius;
   }
 
+  setSpeed(xs, ys) {
+    this.xSpeed = xs;
+    this.ySpeed = ys;
+  }
+
   draw() {
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
