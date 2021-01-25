@@ -1,3 +1,5 @@
+import { resize } from "/modules/utils.js";
+
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
@@ -5,11 +7,6 @@ var x = 0;
 var y = 0;
 var xSpeed = 1;
 var ySpeed = 1;
-
-function resize() {
-  ctx.canvas.width = window.innerWidth - 20;
-  ctx.canvas.height = window.innerHeight - 20;
-}
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -26,6 +23,6 @@ function draw() {
 }
 
 window.onresize = resize;
-
 resize();
+
 setInterval(draw, 10);
