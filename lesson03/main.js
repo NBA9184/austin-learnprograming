@@ -5,7 +5,6 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 const BALL_NUMBER = 50;
-const MAX_RADIUS = 20;
 
 function gameover() {
   ctx.font = "80px Dosis";
@@ -51,7 +50,7 @@ var interval;
 
 function initinalize() {
   for (var i = 0; i < BALL_NUMBER; ++i) {
-    balls.push(new HungryBall(ctx, MAX_RADIUS));
+    balls.push(new HungryBall(ctx));
   }
 }
 // when windows resized, call resize function to resize canvas

@@ -4,7 +4,6 @@ import { resize } from "/modules/utils.js";
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 const BALL_NUMBER = 50;
-const MAX_RADIUS = 20;
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -22,6 +21,6 @@ resize(ctx);
 
 var balls = [];
 for (var i = 0; i < BALL_NUMBER; ++i) {
-  balls.push(new Ball(ctx, MAX_RADIUS));
+  balls.push(new Ball(ctx));
 }
 setInterval(draw, 20);

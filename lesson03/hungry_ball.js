@@ -1,8 +1,8 @@
-import { Ball } from "/modules/ball.js";
+import { Ball, MAX_RADIUS } from "/modules/ball.js";
 
 export class HungryBall extends Ball {
-  constructor(ctx, MAX_RADIUS) {
-    super(ctx, MAX_RADIUS);
+  constructor(ctx, maxRadius = MAX_RADIUS) {
+    super(ctx, maxRadius);
     this.live = true;
     this.eats = 0;
   }

@@ -1,6 +1,9 @@
+export const MAX_RADIUS = 20;
+
 export class Ball {
-  constructor(ctx, MAX_RADIUS) {
+  constructor(ctx, maxRadius = MAX_RADIUS) {
     this.ctx = ctx;
+    this.maxRadius = maxRadius;
     // random postion
     this.x = parseInt(Math.random() * ctx.canvas.width, 10);
     this.y = parseInt(Math.random() * ctx.canvas.height, 10);
@@ -9,7 +12,7 @@ export class Ball {
     this.xSpeed = this.xSpeed === 0 ? 1 : this.xSpeed;
     this.ySpeed = parseInt(Math.random() * 5, 10);
     this.ySpeed = this.ySpeed === 0 ? 1 : this.ySpeed;
-    this.radius = parseInt(Math.random() * MAX_RADIUS, 10);
+    this.radius = parseInt(Math.random() * this.maxRadius, 10);
     this.radius = this.radius === 0 ? 1 : this.radius;
   }
 

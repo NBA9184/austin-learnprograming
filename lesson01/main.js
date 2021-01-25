@@ -23,6 +23,6 @@ function draw() {
 }
 
 window.onresize = resize;
-resize();
+resize(ctx);
 
 setInterval(draw, 10);
