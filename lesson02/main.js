@@ -1,4 +1,4 @@
-import Ball from "../common/ball";
+import { Ball } from "/common/ball.js";
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 console.log("goodd");
