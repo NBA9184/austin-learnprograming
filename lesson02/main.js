@@ -23,4 +23,4 @@ var balls = [];
 for (var i = 0; i < BALL_NUMBER; ++i) {
   balls.push(new Ball(ctx));
 }
-setInterval(draw, 20);
+setInterval(draw, 1);

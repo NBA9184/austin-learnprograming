@@ -25,7 +25,7 @@ function draw() {
     return;
   }
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (var i = 0; i < BALL_NUMBER - 1; i++) {
     if (balls[i].live !== true) continue;
@@ -59,4 +59,4 @@ window.onresize = resize;
 // resize canvas at begining
 resize(ctx);
 initinalize();
-interval = setInterval(draw, 20);
+interval = setInterval(draw, 15);
