@@ -16,4 +16,5 @@ function draw() {
 }
 
 var ball = new Ball(ctx);
+ball.setSpeed(10, 10);
 setInterval(draw, 20);
