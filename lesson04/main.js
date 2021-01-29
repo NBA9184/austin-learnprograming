@@ -11,10 +11,16 @@ window.onresize = resize;
 resize(ctx);
 
 function draw() {
-  //ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.fillRect(20, 40, 80, 10);
+
   ball.draw();
 }
 
 var ball = new Ball(ctx);
-ball.setSpeed(10, 10);
+ball.setSpeed(3, 4);
+ball.setRadius(20);
+ball.setColor("white");
+
 setInterval(draw, 20);

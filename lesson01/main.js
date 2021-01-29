@@ -25,4 +25,4 @@ function draw() {
 window.onresize = resize;
 resize(ctx);
 
-setInterval(draw, 10);
+setInterval(draw, 0);

@@ -3,10 +3,10 @@ import { resize } from "/modules/utils.js";
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-const BALL_NUMBER = 50;
+const BALL_NUMBER = 80;
 
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (var i = 0; i < BALL_NUMBER; i++) {
     balls[i].draw();

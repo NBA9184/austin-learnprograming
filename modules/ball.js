@@ -21,6 +21,14 @@ export class Ball {
     this.ySpeed = ys;
   }
 
+  setRadius(radius) {
+    this.radius = radius;
+  }
+
+  setColor(color) {
+    this.color = color;
+  }
+
   draw() {
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
