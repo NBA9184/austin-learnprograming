@@ -11,7 +11,7 @@ var ySpeed = 1;
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.font = ctx.font.replace(/\d+px/, "28px");
-  ctx.fillText("Happy Halloween!", x, y, 200);
+  ctx.fillText("Happy Chinese New Year!", x, y, 200);
 
   x = x + xSpeed;
   y = y + ySpeed;
